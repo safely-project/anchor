@@ -1,12 +1,12 @@
 [package]
-name = "spl-token"
+name = "safe-token"
 version = "0.1.0"
 description = "Created with Anchor"
 edition = "2018"
 
 [lib]
 crate-type = ["cdylib", "lib"]
-name = "spl_token"
+name = "safe_token"
 
 [features]
 no-entrypoint = []
@@ -16,4 +16,4 @@ cpi = ["no-entrypoint"]
 default = []
 
 [dependencies]
-anchor-lang = "0.20.0"
+safe-anchor-lang = "0.20.0"

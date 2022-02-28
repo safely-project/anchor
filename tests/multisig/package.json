@@ -2,13 +2,13 @@
   "name": "multisig",
   "version": "0.22.0",
   "license": "(MIT OR Apache-2.0)",
-  "homepage": "https://github.com/project-serum/anchor#readme",
+  "homepage": "https://github.com/safely-project/anchor#readme",
   "bugs": {
-    "url": "https://github.com/project-serum/anchor/issues"
+    "url": "https://github.com/safely-project/anchor/issues"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/project-serum/anchor.git"
+    "url": "https://github.com/safely-project/anchor.git"
   },
   "engines": {
     "node": ">=11"

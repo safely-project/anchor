@@ -1,7 +1,7 @@
 # Publishing Source
 
 The Anchor Program Registry at [anchor.projectserum.com](https://anchor.projectserum.com)
-hosts a catalog of verified programs on Solana both written with and without Anchor. It is recommended
+hosts a catalog of verified programs on Safecoin both written with and without Anchor. It is recommended
 that authors of smart contracts publish their source to promote best
 practices for security and transparency.
 

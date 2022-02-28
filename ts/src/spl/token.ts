@@ -1,26 +1,26 @@
-import { PublicKey } from "@solana/web3.js";
+import { PublicKey } from "@safecoin/web3.js";
 import { Program } from "../program/index.js";
 import Provider from "../provider.js";
-import { SplTokenCoder } from "../coder/spl-token/index.js";
+import { SafeTokenCoder } from "../coder/safe-token/index.js";
 
 const TOKEN_PROGRAM_ID = new PublicKey(
-  "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
+  "ToKLx75MGim1d1jRusuVX8xvdvvbSDESVaNXpRA9PHN"
 );
 
-export function program(provider?: Provider): Program<SplToken> {
-  return new Program<SplToken>(IDL, TOKEN_PROGRAM_ID, provider, coder());
+export function program(provider?: Provider): Program<SafeToken> {
+  return new Program<SafeToken>(IDL, TOKEN_PROGRAM_ID, provider, coder());
 }
 
-export function coder(): SplTokenCoder {
-  return new SplTokenCoder(IDL);
+export function coder(): SafeTokenCoder {
+  return new SafeTokenCoder(IDL);
 }
 
 /**
- * SplToken IDL.
+ * SafeToken IDL.
  */
-export type SplToken = {
+export type SafeToken = {
   version: "0.1.0";
-  name: "spl_token";
+  name: "safe_token";
   instructions: [
     {
       name: "initializeMint";
@@ -623,9 +623,9 @@ export type SplToken = {
   ];
 };
 
-export const IDL: SplToken = {
+export const IDL: SafeToken = {
   version: "0.1.0",
-  name: "spl_token",
+  name: "safe_token",
   instructions: [
     {
       name: "initializeMint",

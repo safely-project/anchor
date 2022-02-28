@@ -139,13 +139,13 @@ impl<'a, 'b, 'c, 'info> From<&mut ProxySetAuthority<'info>>
     }
 }
 
-impl From<AuthorityType> for spl_token::instruction::AuthorityType {
-    fn from(authority_ty: AuthorityType) -> spl_token::instruction::AuthorityType {
+impl From<AuthorityType> for safe_token::instruction::AuthorityType {
+    fn from(authority_ty: AuthorityType) -> safe_token::instruction::AuthorityType {
         match authority_ty {
-            AuthorityType::MintTokens => spl_token::instruction::AuthorityType::MintTokens,
-            AuthorityType::FreezeAccount => spl_token::instruction::AuthorityType::FreezeAccount,
-            AuthorityType::AccountOwner => spl_token::instruction::AuthorityType::AccountOwner,
-            AuthorityType::CloseAccount => spl_token::instruction::AuthorityType::CloseAccount,
+            AuthorityType::MintTokens => safe_token::instruction::AuthorityType::MintTokens,
+            AuthorityType::FreezeAccount => safe_token::instruction::AuthorityType::FreezeAccount,
+            AuthorityType::AccountOwner => safe_token::instruction::AuthorityType::AccountOwner,
+            AuthorityType::CloseAccount => safe_token::instruction::AuthorityType::CloseAccount,
         }
     }
 }

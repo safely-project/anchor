@@ -1,17 +1,17 @@
-const anchor = require("@project-serum/anchor");
+const anchor = require("@safely-project/anchor");
 const assert = require("assert");
 const {
   ASSOCIATED_TOKEN_PROGRAM_ID,
   TOKEN_PROGRAM_ID,
   Token,
-} = require("@solana/spl-token");
+} = require("@safecoin/safe-token");
 const miscIdl = require("../target/idl/misc.json");
 const {
   SystemProgram,
   Keypair,
   PublicKey,
   SYSVAR_RENT_PUBKEY,
-} = require("@solana/web3.js");
+} = require("@safecoin/web3.js");
 const utf8 = anchor.utils.bytes.utf8;
 
 describe("misc", () => {
@@ -753,7 +753,7 @@ describe("misc", () => {
     // Request airdrop for secondary wallet.
     const signature = await program.provider.connection.requestAirdrop(
       anotherProgram.provider.wallet.publicKey,
-      anchor.web3.LAMPORTS_PER_SOL
+      anchor.web3.LAMPORTS_PER_SAFE
     );
     await program.provider.connection.confirmTransaction(signature);
     // Create all the accounts.

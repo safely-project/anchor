@@ -1,5 +1,5 @@
 import { inflate } from "pako";
-import { PublicKey } from "@solana/web3.js";
+import { PublicKey } from "@safecoin/web3.js";
 import Provider, { getProvider } from "../provider.js";
 import { Idl, idlAddress, decodeIdlAccount } from "../idl.js";
 import { Coder, BorshCoder } from "../coder/index.js";
@@ -45,7 +45,7 @@ export * from "./namespace/index.js";
  *
  * API specifics are namespace dependent. The examples used in the documentation
  * below will refer to the two counter examples found
- * [here](https://github.com/project-serum/anchor#examples).
+ * [here](https://github.com/safely-project/anchor#examples).
  */
 export class Program<IDL extends Idl = Idl> {
   /**

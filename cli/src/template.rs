@@ -3,7 +3,7 @@ use crate::VERSION;
 use anchor_syn::idl::Idl;
 use anyhow::Result;
 use heck::{CamelCase, MixedCase, SnakeCase};
-use solana_sdk::pubkey::Pubkey;
+use safecoin_sdk::pubkey::Pubkey;
 
 pub fn default_program_id() -> Pubkey {
     "Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS"
@@ -66,7 +66,7 @@ cpi = ["no-entrypoint"]
 default = []
 
 [dependencies]
-anchor-lang = "{2}"
+safe-anchor-lang = "{2}"
 "#,
         name,
         name.to_snake_case(),
@@ -77,7 +77,7 @@ anchor-lang = "{2}"
 pub fn deploy_js_script_host(cluster_url: &str, script_path: &str) -> String {
     format!(
         r#"
-const anchor = require('@project-serum/anchor');
+const anchor = require('@safely-project/anchor');
 
 // Deploy script defined by the user.
 const userScript = require("{0}");
@@ -104,7 +104,7 @@ main();
 
 pub fn deploy_ts_script_host(cluster_url: &str, script_path: &str) -> String {
     format!(
-        r#"import * as anchor from '@project-serum/anchor';
+        r#"import * as anchor from '@safely-project/anchor';
 
 // Deploy script defined by the user.
 const userScript = require("{0}");
@@ -134,7 +134,7 @@ pub fn deploy_script() -> &'static str {
 // single deploy script that's invoked from the CLI, injecting a provider
 // configured from the workspace's Anchor.toml.
 
-const anchor = require("@project-serum/anchor");
+const anchor = require("@safely-project/anchor");
 
 module.exports = async function (provider) {
   // Configure client to use the provider.
@@ -150,7 +150,7 @@ pub fn ts_deploy_script() -> &'static str {
 // single deploy script that's invoked from the CLI, injecting a provider
 // configured from the workspace's Anchor.toml.
 
-const anchor = require("@project-serum/anchor");
+const anchor = require("@safely-project/anchor");
 
 module.exports = async function (provider) {
   // Configure client to use the provider.
@@ -192,7 +192,7 @@ pub struct Initialize {{}}
 
 pub fn mocha(name: &str) -> String {
     format!(
-        r#"const anchor = require("@project-serum/anchor");
+        r#"const anchor = require("@safely-project/anchor");
 
 describe("{}", () => {{
   // Configure the client to use the local cluster.
@@ -215,7 +215,7 @@ pub fn package_json() -> String {
     format!(
         r#"{{
     "dependencies": {{
-        "@project-serum/anchor": "^{0}"
+        "@safely-project/anchor": "^{0}"
     }},
     "devDependencies": {{
         "chai": "^4.3.4",
@@ -231,7 +231,7 @@ pub fn ts_package_json() -> String {
     format!(
         r#"{{
     "dependencies": {{
-        "@project-serum/anchor": "^{0}"
+        "@safely-project/anchor": "^{0}"
     }},
     "devDependencies": {{
         "chai": "^4.3.4",
@@ -249,8 +249,8 @@ pub fn ts_package_json() -> String {
 
 pub fn ts_mocha(name: &str) -> String {
     format!(
-        r#"import * as anchor from "@project-serum/anchor";
-import {{ Program }} from "@project-serum/anchor";
+        r#"import * as anchor from "@safely-project/anchor";
+import {{ Program }} from "@safely-project/anchor";
 import {{ {} }} from "../target/types/{}";
 
 describe("{}", () => {{
@@ -305,7 +305,7 @@ pub fn node_shell(
 ) -> Result<String> {
     let mut eval_string = format!(
         r#"
-const anchor = require('@project-serum/anchor');
+const anchor = require('@safely-project/anchor');
 const web3 = anchor.web3;
 const PublicKey = anchor.web3.PublicKey;
 const Keypair = anchor.web3.Keypair;

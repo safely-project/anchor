@@ -2,14 +2,14 @@
 
 use crate::error::ErrorCode;
 use crate::*;
-use solana_program::account_info::AccountInfo;
-use solana_program::instruction::AccountMeta;
-use solana_program::pubkey::Pubkey;
+use safecoin_program::account_info::AccountInfo;
+use safecoin_program::instruction::AccountMeta;
+use safecoin_program::pubkey::Pubkey;
 use std::collections::BTreeMap;
 use std::fmt;
 use std::ops::{Deref, DerefMut};
 
-/// Wrapper around [`AccountInfo`](crate::solana_program::account_info::AccountInfo)
+/// Wrapper around [`AccountInfo`](crate::safecoin_program::account_info::AccountInfo)
 /// that verifies program ownership and deserializes underlying data into a Rust type.
 ///
 /// # Table of Contents
@@ -85,16 +85,16 @@ use std::ops::{Deref, DerefMut};
 /// functions `#[account]` generates. See the example below for the code you have
 /// to write.
 ///
-/// The mint wrapper type that Anchor provides out of the box for the token program ([source](https://github.com/project-serum/anchor/blob/master/spl/src/token.rs))
+/// The mint wrapper type that Anchor provides out of the box for the token program ([source](https://github.com/safely-project/anchor/blob/master/spl/src/token.rs))
 /// ```ignore
 /// #[derive(Clone)]
-/// pub struct Mint(spl_token::state::Mint);
+/// pub struct Mint(safe_token::state::Mint);
 ///
 /// // This is necessary so we can use "anchor_spl::token::Mint::LEN"
 /// // because rust does not resolve "anchor_spl::token::Mint::LEN" to
-/// // "spl_token::state::Mint::LEN" automatically
+/// // "safe_token::state::Mint::LEN" automatically
 /// impl Mint {
-///     pub const LEN: usize = spl_token::state::Mint::LEN;
+///     pub const LEN: usize = safe_token::state::Mint::LEN;
 /// }
 ///
 /// // You don't have to implement the "try_deserialize" function
@@ -103,7 +103,7 @@ use std::ops::{Deref, DerefMut};
 /// // because non-anchor accounts don't have a discriminator to check
 /// impl anchor_lang::AccountDeserialize for Mint {
 ///     fn try_deserialize_unchecked(buf: &mut &[u8]) -> Result<Self> {
-///         spl_token::state::Mint::unpack(buf).map(Mint)
+///         safe_token::state::Mint::unpack(buf).map(Mint)
 ///     }
 /// }
 /// // AccountSerialize defaults to a no-op which is what we want here
@@ -113,14 +113,14 @@ use std::ops::{Deref, DerefMut};
 ///
 /// impl anchor_lang::Owner for Mint {
 ///     fn owner() -> Pubkey {
-///         // pub use spl_token::ID is used at the top of the file
+///         // pub use safe_token::ID is used at the top of the file
 ///         ID
 ///     }
 /// }
 ///
 /// // Implement the "std::ops::Deref" trait for better user experience
 /// impl Deref for Mint {
-///     type Target = spl_token::state::Mint;
+///     type Target = safe_token::state::Mint;
 ///
 ///     fn deref(&self) -> &Self::Target {
 ///         &self.0
@@ -404,7 +404,7 @@ impl<'a, T: AccountSerialize + AccountDeserialize + Owner + Clone> DerefMut for 
     fn deref_mut(&mut self) -> &mut Self::Target {
         #[cfg(feature = "anchor-debug")]
         if !self.info.is_writable {
-            solana_program::msg!("The given Account is not mutable");
+            safecoin_program::msg!("The given Account is not mutable");
             panic!();
         }
         &mut self.account

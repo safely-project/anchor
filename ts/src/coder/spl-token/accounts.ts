@@ -4,7 +4,7 @@ import { AccountsCoder } from "../index.js";
 import { Idl, IdlTypeDef } from "../../idl.js";
 import { accountSize } from "../common";
 
-export class SplTokenAccountsCoder<A extends string = string>
+export class SafeTokenAccountsCoder<A extends string = string>
   implements AccountsCoder {
   constructor(private idl: Idl) {}
 

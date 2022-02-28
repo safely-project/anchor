@@ -15,5 +15,5 @@ cpi = ["no-entrypoint"]
 default = []
 
 [dependencies]
-anchor-lang = { path = "../../../../lang" }
+safe-anchor-lang = { path = "../../../../lang" }
 counter = { path = "../counter", features = ["cpi"] }

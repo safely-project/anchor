@@ -1,27 +1,27 @@
 //! `anchor_client` provides an RPC client to send transactions and fetch
-//! deserialized accounts from Solana programs written in `anchor_lang`.
+//! deserialized accounts from Safecoin programs written in `anchor_lang`.
 
-use anchor_lang::solana_program::instruction::{AccountMeta, Instruction};
-use anchor_lang::solana_program::program_error::ProgramError;
-use anchor_lang::solana_program::pubkey::Pubkey;
-use anchor_lang::solana_program::system_program;
+use anchor_lang::safecoin_program::instruction::{AccountMeta, Instruction};
+use anchor_lang::safecoin_program::program_error::ProgramError;
+use anchor_lang::safecoin_program::pubkey::Pubkey;
+use anchor_lang::safecoin_program::system_program;
 use anchor_lang::{AccountDeserialize, Discriminator, InstructionData, ToAccountMetas};
 use regex::Regex;
-use solana_account_decoder::UiAccountEncoding;
-use solana_client::client_error::ClientError as SolanaClientError;
-use solana_client::pubsub_client::{PubsubClient, PubsubClientError, PubsubClientSubscription};
-use solana_client::rpc_client::RpcClient;
-use solana_client::rpc_config::{
+use safecoin_account_decoder::UiAccountEncoding;
+use safecoin_client::client_error::ClientError as SafecoinClientError;
+use safecoin_client::pubsub_client::{PubsubClient, PubsubClientError, PubsubClientSubscription};
+use safecoin_client::rpc_client::RpcClient;
+use safecoin_client::rpc_config::{
     RpcAccountInfoConfig, RpcProgramAccountsConfig, RpcTransactionLogsConfig,
     RpcTransactionLogsFilter,
 };
-use solana_client::rpc_filter::{Memcmp, MemcmpEncodedBytes, RpcFilterType};
-use solana_client::rpc_response::{Response as RpcResponse, RpcLogsResponse};
-use solana_sdk::account::Account;
-use solana_sdk::bs58;
-use solana_sdk::commitment_config::CommitmentConfig;
-use solana_sdk::signature::{Signature, Signer};
-use solana_sdk::transaction::Transaction;
+use safecoin_client::rpc_filter::{Memcmp, MemcmpEncodedBytes, RpcFilterType};
+use safecoin_client::rpc_response::{Response as RpcResponse, RpcLogsResponse};
+use safecoin_sdk::account::Account;
+use safecoin_sdk::bs58;
+use safecoin_sdk::commitment_config::CommitmentConfig;
+use safecoin_sdk::signature::{Signature, Signer};
+use safecoin_sdk::transaction::Transaction;
 use std::convert::Into;
 use std::iter::Map;
 use std::rc::Rc;
@@ -30,8 +30,8 @@ use thiserror::Error;
 
 pub use anchor_lang;
 pub use cluster::Cluster;
-pub use solana_client;
-pub use solana_sdk;
+pub use safecoin_client;
+pub use safecoin_sdk;
 
 mod cluster;
 
@@ -39,7 +39,7 @@ mod cluster;
 pub type EventHandle = PubsubClientSubscription<RpcResponse<RpcLogsResponse>>;
 
 /// Client defines the base configuration for building RPC clients to
-/// communitcate with Anchor programs running on a Solana cluster. It's
+/// communitcate with Anchor programs running on a Safecoin cluster. It's
 /// primary use is to build a `Program` client via the `program` method.
 pub struct Client {
     cfg: Config,
@@ -263,7 +263,7 @@ pub struct ProgramAccountsIterator<T> {
     inner: Map<IntoIter<(Pubkey, Account)>, AccountConverterFunction<T>>,
 }
 
-/// Function type that accepts solana accounts and returns deserialized anchor accounts
+/// Function type that accepts safecoin accounts and returns deserialized anchor accounts
 type AccountConverterFunction<T> = fn((Pubkey, Account)) -> Result<(Pubkey, T), ClientError>;
 
 impl<T> Iterator for ProgramAccountsIterator<T> {
@@ -380,9 +380,9 @@ pub enum ClientError {
     #[error("{0}")]
     ProgramError(#[from] ProgramError),
     #[error("{0}")]
-    SolanaClientError(#[from] SolanaClientError),
+    SafecoinClientError(#[from] SafecoinClientError),
     #[error("{0}")]
-    SolanaClientPubsubError(#[from] PubsubClientError),
+    SafecoinClientPubsubError(#[from] PubsubClientError),
     #[error("Unable to parse log: {0}")]
     LogParseError(String),
 }

@@ -1,26 +1,26 @@
-use anchor_lang::solana_program::account_info::AccountInfo;
+use anchor_lang::safecoin_program::account_info::AccountInfo;
 
-use anchor_lang::solana_program::program_pack::Pack;
-use anchor_lang::solana_program::pubkey::Pubkey;
+use anchor_lang::safecoin_program::program_pack::Pack;
+use anchor_lang::safecoin_program::pubkey::Pubkey;
 use anchor_lang::{context::CpiContext, Accounts};
-use anchor_lang::{solana_program, Result};
+use anchor_lang::{safecoin_program, Result};
 use std::ops::Deref;
 
-pub use spl_token::ID;
+pub use safe_token::ID;
 
 pub fn transfer<'a, 'b, 'c, 'info>(
     ctx: CpiContext<'a, 'b, 'c, 'info, Transfer<'info>>,
     amount: u64,
 ) -> Result<()> {
-    let ix = spl_token::instruction::transfer(
-        &spl_token::ID,
+    let ix = safe_token::instruction::transfer(
+        &safe_token::ID,
         ctx.accounts.from.key,
         ctx.accounts.to.key,
         ctx.accounts.authority.key,
         &[],
         amount,
     )?;
-    solana_program::program::invoke_signed(
+    safecoin_program::program::invoke_signed(
         &ix,
         &[
             ctx.accounts.from.clone(),
@@ -36,15 +36,15 @@ pub fn mint_to<'a, 'b, 'c, 'info>(
     ctx: CpiContext<'a, 'b, 'c, 'info, MintTo<'info>>,
     amount: u64,
 ) -> Result<()> {
-    let ix = spl_token::instruction::mint_to(
-        &spl_token::ID,
+    let ix = safe_token::instruction::mint_to(
+        &safe_token::ID,
         ctx.accounts.mint.key,
         ctx.accounts.to.key,
         ctx.accounts.authority.key,
         &[],
         amount,
     )?;
-    solana_program::program::invoke_signed(
+    safecoin_program::program::invoke_signed(
         &ix,
         &[
             ctx.accounts.to.clone(),
@@ -60,15 +60,15 @@ pub fn burn<'a, 'b, 'c, 'info>(
     ctx: CpiContext<'a, 'b, 'c, 'info, Burn<'info>>,
     amount: u64,
 ) -> Result<()> {
-    let ix = spl_token::instruction::burn(
-        &spl_token::ID,
+    let ix = safe_token::instruction::burn(
+        &safe_token::ID,
         ctx.accounts.to.key,
         ctx.accounts.mint.key,
         ctx.accounts.authority.key,
         &[],
         amount,
     )?;
-    solana_program::program::invoke_signed(
+    safecoin_program::program::invoke_signed(
         &ix,
         &[
             ctx.accounts.to.clone(),
@@ -84,15 +84,15 @@ pub fn approve<'a, 'b, 'c, 'info>(
     ctx: CpiContext<'a, 'b, 'c, 'info, Approve<'info>>,
     amount: u64,
 ) -> Result<()> {
-    let ix = spl_token::instruction::approve(
-        &spl_token::ID,
+    let ix = safe_token::instruction::approve(
+        &safe_token::ID,
         ctx.accounts.to.key,
         ctx.accounts.delegate.key,
         ctx.accounts.authority.key,
         &[],
         amount,
     )?;
-    solana_program::program::invoke_signed(
+    safecoin_program::program::invoke_signed(
         &ix,
         &[
             ctx.accounts.to.clone(),
@@ -107,13 +107,13 @@ pub fn approve<'a, 'b, 'c, 'info>(
 pub fn initialize_account<'a, 'b, 'c, 'info>(
     ctx: CpiContext<'a, 'b, 'c, 'info, InitializeAccount<'info>>,
 ) -> Result<()> {
-    let ix = spl_token::instruction::initialize_account(
-        &spl_token::ID,
+    let ix = safe_token::instruction::initialize_account(
+        &safe_token::ID,
         ctx.accounts.account.key,
         ctx.accounts.mint.key,
         ctx.accounts.authority.key,
     )?;
-    solana_program::program::invoke_signed(
+    safecoin_program::program::invoke_signed(
         &ix,
         &[
             ctx.accounts.account.clone(),
@@ -129,14 +129,14 @@ pub fn initialize_account<'a, 'b, 'c, 'info>(
 pub fn close_account<'a, 'b, 'c, 'info>(
     ctx: CpiContext<'a, 'b, 'c, 'info, CloseAccount<'info>>,
 ) -> Result<()> {
-    let ix = spl_token::instruction::close_account(
-        &spl_token::ID,
+    let ix = safe_token::instruction::close_account(
+        &safe_token::ID,
         ctx.accounts.account.key,
         ctx.accounts.destination.key,
         ctx.accounts.authority.key,
         &[], // TODO: support multisig
     )?;
-    solana_program::program::invoke_signed(
+    safecoin_program::program::invoke_signed(
         &ix,
         &[
             ctx.accounts.account.clone(),
@@ -151,14 +151,14 @@ pub fn close_account<'a, 'b, 'c, 'info>(
 pub fn freeze_account<'a, 'b, 'c, 'info>(
     ctx: CpiContext<'a, 'b, 'c, 'info, FreezeAccount<'info>>,
 ) -> Result<()> {
-    let ix = spl_token::instruction::freeze_account(
-        &spl_token::ID,
+    let ix = safe_token::instruction::freeze_account(
+        &safe_token::ID,
         ctx.accounts.account.key,
         ctx.accounts.mint.key,
         ctx.accounts.authority.key,
         &[], // TODO: Support multisig signers.
     )?;
-    solana_program::program::invoke_signed(
+    safecoin_program::program::invoke_signed(
         &ix,
         &[
             ctx.accounts.account.clone(),
@@ -173,14 +173,14 @@ pub fn freeze_account<'a, 'b, 'c, 'info>(
 pub fn thaw_account<'a, 'b, 'c, 'info>(
     ctx: CpiContext<'a, 'b, 'c, 'info, ThawAccount<'info>>,
 ) -> Result<()> {
-    let ix = spl_token::instruction::thaw_account(
-        &spl_token::ID,
+    let ix = safe_token::instruction::thaw_account(
+        &safe_token::ID,
         ctx.accounts.account.key,
         ctx.accounts.mint.key,
         ctx.accounts.authority.key,
         &[], // TODO: Support multisig signers.
     )?;
-    solana_program::program::invoke_signed(
+    safecoin_program::program::invoke_signed(
         &ix,
         &[
             ctx.accounts.account.clone(),
@@ -198,14 +198,14 @@ pub fn initialize_mint<'a, 'b, 'c, 'info>(
     authority: &Pubkey,
     freeze_authority: Option<&Pubkey>,
 ) -> Result<()> {
-    let ix = spl_token::instruction::initialize_mint(
-        &spl_token::ID,
+    let ix = safe_token::instruction::initialize_mint(
+        &safe_token::ID,
         ctx.accounts.mint.key,
         authority,
         freeze_authority,
         decimals,
     )?;
-    solana_program::program::invoke_signed(
+    safecoin_program::program::invoke_signed(
         &ix,
         &[ctx.accounts.mint.clone(), ctx.accounts.rent.clone()],
         ctx.signer_seeds,
@@ -215,7 +215,7 @@ pub fn initialize_mint<'a, 'b, 'c, 'info>(
 
 pub fn set_authority<'a, 'b, 'c, 'info>(
     ctx: CpiContext<'a, 'b, 'c, 'info, SetAuthority<'info>>,
-    authority_type: spl_token::instruction::AuthorityType,
+    authority_type: safe_token::instruction::AuthorityType,
     new_authority: Option<Pubkey>,
 ) -> Result<()> {
     let mut spl_new_authority: Option<&Pubkey> = None;
@@ -223,15 +223,15 @@ pub fn set_authority<'a, 'b, 'c, 'info>(
         spl_new_authority = new_authority.as_ref()
     }
 
-    let ix = spl_token::instruction::set_authority(
-        &spl_token::ID,
+    let ix = safe_token::instruction::set_authority(
+        &safe_token::ID,
         ctx.accounts.account_or_mint.key,
         spl_new_authority,
         authority_type,
         ctx.accounts.current_authority.key,
         &[], // TODO: Support multisig signers.
     )?;
-    solana_program::program::invoke_signed(
+    safecoin_program::program::invoke_signed(
         &ix,
         &[
             ctx.accounts.account_or_mint.clone(),
@@ -312,15 +312,15 @@ pub struct SetAuthority<'info> {
 }
 
 #[derive(Clone)]
-pub struct TokenAccount(spl_token::state::Account);
+pub struct TokenAccount(safe_token::state::Account);
 
 impl TokenAccount {
-    pub const LEN: usize = spl_token::state::Account::LEN;
+    pub const LEN: usize = safe_token::state::Account::LEN;
 }
 
 impl anchor_lang::AccountDeserialize for TokenAccount {
     fn try_deserialize_unchecked(buf: &mut &[u8]) -> anchor_lang::Result<Self> {
-        spl_token::state::Account::unpack(buf)
+        safe_token::state::Account::unpack(buf)
             .map(TokenAccount)
             .map_err(Into::into)
     }
@@ -335,7 +335,7 @@ impl anchor_lang::Owner for TokenAccount {
 }
 
 impl Deref for TokenAccount {
-    type Target = spl_token::state::Account;
+    type Target = safe_token::state::Account;
 
     fn deref(&self) -> &Self::Target {
         &self.0
@@ -343,15 +343,15 @@ impl Deref for TokenAccount {
 }
 
 #[derive(Clone)]
-pub struct Mint(spl_token::state::Mint);
+pub struct Mint(safe_token::state::Mint);
 
 impl Mint {
-    pub const LEN: usize = spl_token::state::Mint::LEN;
+    pub const LEN: usize = safe_token::state::Mint::LEN;
 }
 
 impl anchor_lang::AccountDeserialize for Mint {
     fn try_deserialize_unchecked(buf: &mut &[u8]) -> anchor_lang::Result<Self> {
-        spl_token::state::Mint::unpack(buf)
+        safe_token::state::Mint::unpack(buf)
             .map(Mint)
             .map_err(Into::into)
     }
@@ -366,7 +366,7 @@ impl anchor_lang::Owner for Mint {
 }
 
 impl Deref for Mint {
-    type Target = spl_token::state::Mint;
+    type Target = safe_token::state::Mint;
 
     fn deref(&self) -> &Self::Target {
         &self.0

@@ -30,12 +30,12 @@ pub enum ErrorCode {
 }
 ```
 
-Observe the [#[error_code]](https://docs.rs/anchor-lang/latest/anchor_lang/attr.error_code.html) attribute on the `ErrorCode` enum.
+Observe the [#[error_code]](https://docs.rs/safe-anchor-lang/latest/anchor_lang/attr.error_code.html) attribute on the `ErrorCode` enum.
 This macro generates internal anchor code that helps anchor turn the error code into an error and display it properly.
 
-To create an error, use the [`error!`](https://docs.rs/anchor-lang/latest/anchor_lang/prelude/macro.error.html) macro together with an error code. This macro creates an [`AnchorError`](https://docs.rs/anchor-lang/latest/anchor_lang/error/struct.AnchorError.html) that includes helpful information like the file and line the error was created in.
+To create an error, use the [`error!`](https://docs.rs/safe-anchor-lang/latest/anchor_lang/prelude/macro.error.html) macro together with an error code. This macro creates an [`AnchorError`](https://docs.rs/safe-anchor-lang/latest/anchor_lang/error/struct.AnchorError.html) that includes helpful information like the file and line the error was created in.
 
-To make writing errors even easier, anchor also provides the [`err!`](https://docs.rs/anchor-lang/latest/anchor_lang/prelude/macro.err.html and the [`require!`](https://docs.rs/anchor-lang/latest/anchor_lang/prelude/macro.require.html macros.
+To make writing errors even easier, anchor also provides the [`err!`](https://docs.rs/safe-anchor-lang/latest/anchor_lang/prelude/macro.err.html and the [`require!`](https://docs.rs/safe-anchor-lang/latest/anchor_lang/prelude/macro.require.html macros.
 
 ## Using the Client
 
@@ -53,4 +53,4 @@ try {
 
 It's that easy. :)
 
-To run the full example, go [here](https://github.com/project-serum/anchor/tree/master/examples/tutorial/basic-4).
+To run the full example, go [here](https://github.com/safely-project/anchor/tree/master/examples/tutorial/basic-4).

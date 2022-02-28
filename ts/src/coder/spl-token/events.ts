@@ -3,7 +3,7 @@ import { Idl } from "../../idl.js";
 import { Event } from "../../program/event";
 import { IdlEvent } from "../../idl";
 
-export class SplTokenEventsCoder implements EventCoder {
+export class SafeTokenEventsCoder implements EventCoder {
   constructor(_idl: Idl) {}
 
   decode<E extends IdlEvent = IdlEvent, T = Record<string, string>>(

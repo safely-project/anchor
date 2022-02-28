@@ -1,6 +1,6 @@
-import * as anchor from "@project-serum/anchor";
+import * as anchor from "@safely-project/anchor";
 import BN from "bn.js";
-import { Keypair } from "@solana/web3.js";
+import { Keypair } from "@safecoin/web3.js";
 
 describe("typescript", () => {
   // Configure the client to use the local cluster.

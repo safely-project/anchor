@@ -80,7 +80,7 @@ pub fn install_version(version: &Version) -> Result<()> {
         .args(&[
             "install",
             "--git",
-            "https://github.com/project-serum/anchor",
+            "https://github.com/safely-project/anchor",
             "--tag",
             &format!("v{}", &version),
             "anchor-cli",
@@ -159,8 +159,8 @@ pub fn fetch_versions() -> Vec<semver::Version> {
 
     let client = reqwest::blocking::Client::new();
     let versions: Vec<Release> = client
-        .get("https://api.github.com/repos/project-serum/anchor/tags")
-        .header(USER_AGENT, "avm https://github.com/project-serum/anchor")
+        .get("https://api.github.com/repos/safely-project/anchor/tags")
+        .header(USER_AGENT, "avm https://github.com/safely-project/anchor")
         .send()
         .unwrap()
         .json()

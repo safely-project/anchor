@@ -1,7 +1,7 @@
 import { StateCoder } from "../index.js";
 import { Idl } from "../../idl";
 
-export class SplTokenStateCoder implements StateCoder {
+export class SafeTokenStateCoder implements StateCoder {
   constructor(_idl: Idl) {}
 
   encode<T = any>(_name: string, _account: T): Promise<Buffer> {

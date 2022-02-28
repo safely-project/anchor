@@ -4,20 +4,20 @@
 //
 // TODO: Modernize all these apis. This is all quite clunky.
 
-const Token = require("@solana/spl-token").Token;
-const TOKEN_PROGRAM_ID = require("@solana/spl-token").TOKEN_PROGRAM_ID;
-const TokenInstructions = require("@project-serum/serum").TokenInstructions;
-const Market = require("@project-serum/serum").Market;
-const DexInstructions = require("@project-serum/serum").DexInstructions;
-const web3 = require("@project-serum/anchor").web3;
+const Token = require("@safecoin/safe-token").Token;
+const TOKEN_PROGRAM_ID = require("@safecoin/safe-token").TOKEN_PROGRAM_ID;
+const TokenInstructions = require("@safely-project/serum").TokenInstructions;
+const Market = require("@safely-project/serum").Market;
+const DexInstructions = require("@safely-project/serum").DexInstructions;
+const web3 = require("@safely-project/anchor").web3;
 const Connection = web3.Connection;
-const BN = require("@project-serum/anchor").BN;
-const serumCmn = require("@project-serum/common");
+const BN = require("@safely-project/anchor").BN;
+const serumCmn = require("@safely-project/common");
 const Account = web3.Account;
 const Transaction = web3.Transaction;
 const PublicKey = web3.PublicKey;
 const SystemProgram = web3.SystemProgram;
-const DEX_PID = new PublicKey("9xQeWvG816bUx9EPjHmaT23yvVM2ZWbrrpZb9PusVFin");
+const DEX_PID = new PublicKey("SRMrEgnzRgGMQ8QzcL8cjWr5xpdVs1KQCQ58Jkkq1qx");
 
 async function setupTwoMarkets({ provider }) {
   // Setup mints with initial tokens owned by the provider.

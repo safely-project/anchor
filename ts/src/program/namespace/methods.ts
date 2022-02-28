@@ -6,7 +6,7 @@ import {
   TransactionInstruction,
   TransactionSignature,
   PublicKey,
-} from "@solana/web3.js";
+} from "@safecoin/web3.js";
 import { SimulateResponse } from "./simulate.js";
 import { TransactionFn } from "./transaction.js";
 import { Idl } from "../../idl.js";

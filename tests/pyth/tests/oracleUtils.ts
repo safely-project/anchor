@@ -1,5 +1,5 @@
 import { Buffer } from "buffer";
-import { BN, Program, web3 } from "@project-serum/anchor";
+import { BN, Program, web3 } from "@safely-project/anchor";
 
 export const Magic = 0xa1b2c3d4;
 export const Version1 = 1;

@@ -4,40 +4,40 @@
   <h1>Anchor</h1>
 
   <p>
-    <strong>Solana Sealevel Framework</strong>
+    <strong>Safecoin Sealevel Framework</strong>
   </p>
 
   <p>
-    <a href="https://github.com/project-serum/anchor/actions"><img alt="Build Status" src="https://github.com/project-serum/anchor/actions/workflows/tests.yaml/badge.svg" /></a>
-    <a href="https://project-serum.github.io/anchor/"><img alt="Tutorials" src="https://img.shields.io/badge/docs-tutorials-blueviolet" /></a>
+    <a href="https://github.com/safely-project/anchor/actions"><img alt="Build Status" src="https://github.com/safely-project/anchor/actions/workflows/tests.yaml/badge.svg" /></a>
+    <a href="https://safely-project.github.io/anchor/"><img alt="Tutorials" src="https://img.shields.io/badge/docs-tutorials-blueviolet" /></a>
     <a href="https://discord.gg/PDeRXyVURd"><img alt="Discord Chat" src="https://img.shields.io/discord/889577356681945098?color=blueviolet" /></a>
-    <a href="https://opensource.org/licenses/Apache-2.0"><img alt="License" src="https://img.shields.io/github/license/project-serum/anchor?color=blueviolet" /></a>
+    <a href="https://opensource.org/licenses/Apache-2.0"><img alt="License" src="https://img.shields.io/github/license/safely-project/anchor?color=blueviolet" /></a>
   </p>
 </div>
 
-Anchor is a framework for Solana's [Sealevel](https://medium.com/solana-labs/sealevel-parallel-processing-thousands-of-smart-contracts-d814b378192) runtime providing several convenient developer tools for writing smart contracts.
+Anchor is a framework for Safecoin's [Sealevel](https://medium.com/solana-labs/sealevel-parallel-processing-thousands-of-smart-contracts-d814b378192) runtime providing several convenient developer tools for writing smart contracts.
 
-- Rust eDSL for writing Solana programs
+- Rust eDSL for writing Safecoin programs
 - [IDL](https://en.wikipedia.org/wiki/Interface_description_language) specification
 - TypeScript package for generating clients from IDL
 - CLI and workspace management for developing complete applications
 
-If you're familiar with developing in Ethereum's [Solidity](https://docs.soliditylang.org/en/v0.7.4/), [Truffle](https://www.trufflesuite.com/), [web3.js](https://github.com/ethereum/web3.js), then the experience will be familiar. Although the DSL syntax and semantics are targeted at Solana, the high level flow of writing RPC request handlers, emitting an IDL, and generating clients from IDL is the same.
+If you're familiar with developing in Ethereum's [Solidity](https://docs.soliditylang.org/en/v0.7.4/), [Truffle](https://www.trufflesuite.com/), [web3.js](https://github.com/ethereum/web3.js), then the experience will be familiar. Although the DSL syntax and semantics are targeted at Safecoin, the high level flow of writing RPC request handlers, emitting an IDL, and generating clients from IDL is the same.
 
 ## Getting Started
 
-For a quickstart guide and in depth tutorials, see the [anchor book](https://book.anchor-lang.com) and the older [documentation](https://project-serum.github.io/anchor/getting-started/introduction.html) that is being phased out.
-To jump straight to examples, go [here](https://github.com/project-serum/anchor/tree/master/examples). For the latest Rust and TypeScript API documentation, see [docs.rs](https://docs.rs/anchor-lang) and the [typedoc](https://project-serum.github.io/anchor/ts/index.html).
+For a quickstart guide and in depth tutorials, see the [anchor book](https://book.safe-anchor-lang.com) and the older [documentation](https://safely-project.github.io/anchor/getting-started/introduction.html) that is being phased out.
+To jump straight to examples, go [here](https://github.com/safely-project/anchor/tree/master/examples). For the latest Rust and TypeScript API documentation, see [docs.rs](https://docs.rs/safe-anchor-lang) and the [typedoc](https://safely-project.github.io/anchor/ts/index.html).
 
 ## Packages
 
 | Package | Description | Version | Docs |
 | :-- | :-- | :--| :-- |
-| `anchor-lang` | Rust primitives for writing programs on Solana | [![Crates.io](https://img.shields.io/crates/v/anchor-lang?color=blue)](https://crates.io/crates/anchor-lang) | [![Docs.rs](https://docs.rs/anchor-lang/badge.svg)](https://docs.rs/anchor-lang) |
-| `anchor-spl` | CPI clients for SPL programs on Solana | ![crates](https://img.shields.io/crates/v/anchor-spl?color=blue) | [![Docs.rs](https://docs.rs/anchor-spl/badge.svg)](https://docs.rs/anchor-spl) |
+| `safe-anchor-lang` | Rust primitives for writing programs on Safecoin | [![Crates.io](https://img.shields.io/crates/v/safe-anchor-lang?color=blue)](https://crates.io/crates/safe-anchor-lang) | [![Docs.rs](https://docs.rs/safe-anchor-lang/badge.svg)](https://docs.rs/safe-anchor-lang) |
+| `safe-safe-anchor-spl` | CPI clients for SPL programs on Safecoin | ![crates](https://img.shields.io/crates/v/safe-safe-anchor-spl?color=blue) | [![Docs.rs](https://docs.rs/safe-safe-anchor-spl/badge.svg)](https://docs.rs/safe-safe-anchor-spl) |
 | `anchor-client` | Rust client for Anchor programs | ![crates](https://img.shields.io/crates/v/anchor-client?color=blue) | [![Docs.rs](https://docs.rs/anchor-client/badge.svg)](https://docs.rs/anchor-client) |
-| `@project-serum/anchor` | TypeScript client for Anchor programs | [![npm](https://img.shields.io/npm/v/@project-serum/anchor.svg?color=blue)](https://www.npmjs.com/package/@project-serum/anchor) | [![Docs](https://img.shields.io/badge/docs-typedoc-blue)](https://project-serum.github.io/anchor/ts/index.html) |
-| `@project-serum/anchor-cli` | CLI to support building and managing an Anchor workspace | [![npm](https://img.shields.io/npm/v/@project-serum/anchor-cli.svg?color=blue)](https://www.npmjs.com/package/@project-serum/anchor-cli) | [![Docs](https://img.shields.io/badge/docs-typedoc-blue)](https://project-serum.github.io/anchor/cli/commands.html) |
+| `@safely-project/anchor` | TypeScript client for Anchor programs | [![npm](https://img.shields.io/npm/v/@safely-project/anchor.svg?color=blue)](https://www.npmjs.com/package/@safely-project/anchor) | [![Docs](https://img.shields.io/badge/docs-typedoc-blue)](https://safely-project.github.io/anchor/ts/index.html) |
+| `@safely-project/anchor-cli` | CLI to support building and managing an Anchor workspace | [![npm](https://img.shields.io/npm/v/@safely-project/anchor-cli.svg?color=blue)](https://www.npmjs.com/package/@safely-project/anchor-cli) | [![Docs](https://img.shields.io/badge/docs-typedoc-blue)](https://safely-project.github.io/anchor/cli/commands.html) |
 
 ## Note
 
@@ -94,8 +94,8 @@ pub struct Counter {
 }
 ```
 
-For more, see the [examples](https://github.com/project-serum/anchor/tree/master/examples)
-and [tests](https://github.com/project-serum/anchor/tree/master/tests) directories.
+For more, see the [examples](https://github.com/safely-project/anchor/tree/master/examples)
+and [tests](https://github.com/safely-project/anchor/tree/master/tests) directories.
 
 ## License
 
@@ -113,7 +113,7 @@ Please see the [CONTRIBUTING.md](./CONTRIBUTING.md) to learn how.
 ### Thanks ❤️
 
 <div align="center">
-  <a href="https://github.com/project-serum/anchor/graphs/contributors">
-    <img src="https://contrib.rocks/image?repo=project-serum/anchor" width="100%" />
+  <a href="https://github.com/safely-project/anchor/graphs/contributors">
+    <img src="https://contrib.rocks/image?repo=safely-project/anchor" width="100%" />
   </a>
 </div>

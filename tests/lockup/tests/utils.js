@@ -1,5 +1,5 @@
-const anchor = require("@project-serum/anchor");
-const serumCmn = require("@project-serum/common");
+const anchor = require("@safely-project/anchor");
+const serumCmn = require("@safely-project/common");
 
 async function createBalanceSandbox(provider, r, registrySigner) {
   const spt = anchor.web3.Keypair.generate();

@@ -6,7 +6,7 @@ wallet = "~/.config/solana/id.json"
 swap = "Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS"
 
 [[test.genesis]]
-address = "9xQeWvG816bUx9EPjHmaT23yvVM2ZWbrrpZb9PusVFin"
+address = "SRMrEgnzRgGMQ8QzcL8cjWr5xpdVs1KQCQ58Jkkq1qx"
 program = "./deps/serum-dex/dex/target/deploy/serum_dex.so"
 
 [scripts]

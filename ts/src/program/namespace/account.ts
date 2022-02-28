@@ -8,7 +8,7 @@ import {
   Commitment,
   GetProgramAccountsFilter,
   AccountInfo,
-} from "@solana/web3.js";
+} from "@safecoin/web3.js";
 import Provider, { getProvider } from "../../provider.js";
 import { Idl, IdlTypeDef } from "../../idl.js";
 import { Coder, BorshCoder } from "../../coder/index.js";

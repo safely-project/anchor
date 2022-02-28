@@ -1,5 +1,5 @@
-import * as anchor from "@project-serum/anchor";
-import { Program } from "@project-serum/anchor";
+import * as anchor from "@safely-project/anchor";
+import { Program } from "@safely-project/anchor";
 import { SafetyChecks } from "../target/types/safety_checks";
 
 describe("safety-checks", () => {

@@ -24,7 +24,7 @@ pub fn generate(accs: &AccountsStruct) -> proc_macro2::TokenStream {
                     let ty = &s.raw_field.ty;
                     quote! {
                         #[cfg(feature = "anchor-debug")]
-                        ::solana_program::log::sol_log(stringify!(#name));
+                        ::safecoin_program::log::sol_log(stringify!(#name));
                         let #name: #ty = anchor_lang::Accounts::try_accounts(program_id, accounts, ix_data, __bumps)?;
                     }
                 }
@@ -43,7 +43,7 @@ pub fn generate(accs: &AccountsStruct) -> proc_macro2::TokenStream {
                         let typed_name = f.typed_ident();
                         quote! {
                             #[cfg(feature = "anchor-debug")]
-                            ::solana_program::log::sol_log(stringify!(#typed_name));
+                            ::safecoin_program::log::sol_log(stringify!(#typed_name));
                             let #typed_name = anchor_lang::Accounts::try_accounts(program_id, accounts, ix_data, __bumps)
                                 .map_err(|e| e.with_account_name(#name))?;
                         }
@@ -91,8 +91,8 @@ pub fn generate(accs: &AccountsStruct) -> proc_macro2::TokenStream {
         impl<#combined_generics> anchor_lang::Accounts<#trait_generics> for #name<#struct_generics> #where_clause {
             #[inline(never)]
             fn try_accounts(
-                program_id: &anchor_lang::solana_program::pubkey::Pubkey,
-                accounts: &mut &[anchor_lang::solana_program::account_info::AccountInfo<'info>],
+                program_id: &anchor_lang::safecoin_program::pubkey::Pubkey,
+                accounts: &mut &[anchor_lang::safecoin_program::account_info::AccountInfo<'info>],
                 ix_data: &[u8],
                 __bumps: &mut std::collections::BTreeMap<String, u8>,
             ) -> anchor_lang::Result<Self> {

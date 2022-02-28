@@ -3,7 +3,7 @@ use crate::{Program, State};
 use heck::CamelCase;
 use quote::quote;
 
-// Generate non-inlined wrappers for each instruction handler, since Solana's
+// Generate non-inlined wrappers for each instruction handler, since Safecoin's
 // BPF max stack size can't handle reasonable sized dispatch trees without doing
 // so.
 pub fn generate(program: &Program) -> proc_macro2::TokenStream {
@@ -94,7 +94,7 @@ pub fn generate(program: &Program) -> proc_macro2::TokenStream {
                 let rent = Rent::get()?;
                 let lamports = rent.minimum_balance(space);
                 let seeds = &[&[nonce][..]];
-                let ix = anchor_lang::solana_program::system_instruction::create_account_with_seed(
+                let ix = anchor_lang::safecoin_program::system_instruction::create_account_with_seed(
                     from,
                     &to,
                     &base,
@@ -103,7 +103,7 @@ pub fn generate(program: &Program) -> proc_macro2::TokenStream {
                     space as u64,
                     owner,
                 );
-                anchor_lang::solana_program::program::invoke_signed(
+                anchor_lang::safecoin_program::program::invoke_signed(
                     &ix,
                     &[
                         accounts.from.clone(),
@@ -224,7 +224,7 @@ pub fn generate(program: &Program) -> proc_macro2::TokenStream {
                             let mut ctor_user_def_accounts =
                             #anchor_ident::try_accounts(program_id, &mut remaining_accounts, ix_data, &mut __bumps)?;
 
-                            // Create the solana account for the ctor data.
+                            // Create the safecoin account for the ctor data.
                             let from = ctor_accounts.from.key;
                             let (base, nonce) = Pubkey::find_program_address(&[], ctor_accounts.program.key);
                             let seed = anchor_lang::__private::PROGRAM_STATE_SEED;
@@ -234,7 +234,7 @@ pub fn generate(program: &Program) -> proc_macro2::TokenStream {
                             let rent = Rent::get()?;
                             let lamports = rent.minimum_balance(std::convert::TryInto::try_into(space).unwrap());
                             let seeds = &[&[nonce][..]];
-                            let ix = anchor_lang::solana_program::system_instruction::create_account_with_seed(
+                            let ix = anchor_lang::safecoin_program::system_instruction::create_account_with_seed(
                                 from,
                                 &to,
                                 &base,
@@ -243,7 +243,7 @@ pub fn generate(program: &Program) -> proc_macro2::TokenStream {
                                 space as u64,
                                 owner,
                             );
-                            anchor_lang::solana_program::program::invoke_signed(
+                            anchor_lang::safecoin_program::program::invoke_signed(
                                 &ix,
                                 &[
                                     ctor_accounts.from.clone(),
@@ -314,7 +314,7 @@ pub fn generate(program: &Program) -> proc_macro2::TokenStream {
                                 #(#ctor_untyped_args),*
                             )?;
 
-                            // Create the solana account for the ctor data.
+                            // Create the safecoin account for the ctor data.
                             let from = ctor_accounts.from.key;
                             let (base, nonce) = Pubkey::find_program_address(&[], ctor_accounts.program.key);
                             let seed = anchor_lang::accounts::state::ProgramState::<#name>::seed();
@@ -324,7 +324,7 @@ pub fn generate(program: &Program) -> proc_macro2::TokenStream {
                             let rent = Rent::get()?;
                             let lamports = rent.minimum_balance(std::convert::TryInto::try_into(space).unwrap());
                             let seeds = &[&[nonce][..]];
-                            let ix = anchor_lang::solana_program::system_instruction::create_account_with_seed(
+                            let ix = anchor_lang::safecoin_program::system_instruction::create_account_with_seed(
                                 from,
                                 &to,
                                 &base,
@@ -333,7 +333,7 @@ pub fn generate(program: &Program) -> proc_macro2::TokenStream {
                                 space,
                                 owner,
                             );
-                            anchor_lang::solana_program::program::invoke_signed(
+                            anchor_lang::safecoin_program::program::invoke_signed(
                                 &ix,
                                 &[
                                     ctor_accounts.from.clone(),

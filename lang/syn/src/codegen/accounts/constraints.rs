@@ -352,7 +352,7 @@ fn generate_constraint_init_group(f: &Field, c: &ConstraintInitGroup) -> proc_ma
                 #find_pda
 
                 let #field: #ty_decl = {
-                    if !#if_needed || #field.as_ref().owner == &anchor_lang::solana_program::system_program::ID {
+                    if !#if_needed || #field.as_ref().owner == &anchor_lang::safecoin_program::system_program::ID {
                         // Define payer variable.
                         #payer
 
@@ -390,7 +390,7 @@ fn generate_constraint_init_group(f: &Field, c: &ConstraintInitGroup) -> proc_ma
                 #find_pda
 
                 let #field: #ty_decl = {
-                    if !#if_needed || #field.as_ref().owner == &anchor_lang::solana_program::system_program::ID {
+                    if !#if_needed || #field.as_ref().owner == &anchor_lang::safecoin_program::system_program::ID {
                         #payer
 
                         let cpi_program = associated_token_program.to_account_info();
@@ -443,7 +443,7 @@ fn generate_constraint_init_group(f: &Field, c: &ConstraintInitGroup) -> proc_ma
                 #find_pda
 
                 let #field: #ty_decl = {
-                    if !#if_needed || #field.as_ref().owner == &anchor_lang::solana_program::system_program::ID {
+                    if !#if_needed || #field.as_ref().owner == &anchor_lang::safecoin_program::system_program::ID {
                         // Define payer variable.
                         #payer
 
@@ -461,7 +461,7 @@ fn generate_constraint_init_group(f: &Field, c: &ConstraintInitGroup) -> proc_ma
                     }
                     let pa: #ty_decl = #from_account_info;
                     if #if_needed {
-                        if pa.mint_authority != anchor_lang::solana_program::program_option::COption::Some(#owner.key()) {
+                        if pa.mint_authority != anchor_lang::safecoin_program::program_option::COption::Some(#owner.key()) {
                             return Err(anchor_lang::anchor_attribute_error::error_with_account_name!(anchor_lang::error::ErrorCode::ConstraintMintMintAuthority, #name_str));
                         }
                         if pa.freeze_authority
@@ -533,7 +533,7 @@ fn generate_constraint_init_group(f: &Field, c: &ConstraintInitGroup) -> proc_ma
 
                     // Create the account. Always do this in the event
                     // if needed is not specified or the system program is the owner.
-                    if !#if_needed || actual_owner == &anchor_lang::solana_program::system_program::ID {
+                    if !#if_needed || actual_owner == &anchor_lang::safecoin_program::system_program::ID {
                         // Define the payer variable.
                         #payer
 
@@ -660,12 +660,12 @@ fn generate_constraint_associated_token(
     let name = &f.ident;
     let name_str = name.to_string();
     let wallet_address = &c.wallet;
-    let spl_token_mint_address = &c.mint;
+    let safe_token_mint_address = &c.mint;
     quote! {
         if #name.owner != #wallet_address.key() {
             return Err(anchor_lang::anchor_attribute_error::error_with_account_name!(anchor_lang::error::ErrorCode::ConstraintTokenOwner, #name_str));
         }
-        let __associated_token_address = anchor_spl::associated_token::get_associated_token_address(&#wallet_address.key(), &#spl_token_mint_address.key());
+        let __associated_token_address = anchor_spl::associated_token::get_associated_token_address(&#wallet_address.key(), &#safe_token_mint_address.key());
         if #name.key() != __associated_token_address {
             return Err(anchor_lang::anchor_attribute_error::error_with_account_name!(anchor_lang::error::ErrorCode::ConstraintAssociated, #name_str));
         }
@@ -692,8 +692,8 @@ pub fn generate_create_account(
         if __current_lamports == 0 {
             // Create the token account with right amount of lamports and space, and the correct owner.
             let lamports = __anchor_rent.minimum_balance(#space);
-            anchor_lang::solana_program::program::invoke_signed(
-                &anchor_lang::solana_program::system_instruction::create_account(
+            anchor_lang::safecoin_program::program::invoke_signed(
+                &anchor_lang::safecoin_program::system_instruction::create_account(
                     &payer.key(),
                     &#field.key(),
                     lamports,
@@ -714,8 +714,8 @@ pub fn generate_create_account(
                 .max(1)
                 .saturating_sub(__current_lamports);
             if required_lamports > 0 {
-                anchor_lang::solana_program::program::invoke(
-                    &anchor_lang::solana_program::system_instruction::transfer(
+                anchor_lang::safecoin_program::program::invoke(
+                    &anchor_lang::safecoin_program::system_instruction::transfer(
                         &payer.key(),
                         &#field.key(),
                         required_lamports,
@@ -728,8 +728,8 @@ pub fn generate_create_account(
                 )?;
             }
             // Allocate space.
-            anchor_lang::solana_program::program::invoke_signed(
-                &anchor_lang::solana_program::system_instruction::allocate(
+            anchor_lang::safecoin_program::program::invoke_signed(
+                &anchor_lang::safecoin_program::system_instruction::allocate(
                     &#field.key(),
                     #space as u64,
                 ),
@@ -740,8 +740,8 @@ pub fn generate_create_account(
                 &[#seeds_with_nonce],
             )?;
             // Assign to the spl token program.
-            anchor_lang::solana_program::program::invoke_signed(
-                &anchor_lang::solana_program::system_instruction::assign(
+            anchor_lang::safecoin_program::program::invoke_signed(
+                &anchor_lang::safecoin_program::system_instruction::assign(
                     &#field.key(),
                     #owner,
                 ),

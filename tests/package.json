@@ -33,10 +33,10 @@
     "declare-id"
   ],
   "dependencies": {
-    "@project-serum/anchor": "^0.22.0",
-    "@project-serum/common": "^0.0.1-beta.3",
-    "@project-serum/serum": "^0.13.60",
-    "@solana/spl-token": "^0.1.8"
+    "@safely-project/anchor": "^0.22.0",
+    "@safely-project/common": "^0.0.1-beta.3",
+    "@safely-project/serum": "^0.13.60",
+    "@safecoin/safe-token": "^0.1.7-b"
   },
   "devDependencies": {
     "@types/node": "^14.14.37",

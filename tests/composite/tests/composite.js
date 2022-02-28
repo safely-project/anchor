@@ -1,5 +1,5 @@
 const assert = require("assert");
-const anchor = require("@project-serum/anchor");
+const anchor = require("@safely-project/anchor");
 
 describe("composite", () => {
   const provider = anchor.Provider.local();

@@ -1,7 +1,7 @@
 const assert = require("assert");
-const anchor = require("@project-serum/anchor");
-const serumCmn = require("@project-serum/common");
-const { TOKEN_PROGRAM_ID } = require("@solana/spl-token");
+const anchor = require("@safely-project/anchor");
+const serumCmn = require("@safely-project/common");
+const { TOKEN_PROGRAM_ID } = require("@safecoin/safe-token");
 const utils = require("./utils");
 
 anchor.utils.features.set("anchor-deprecated-state");
@@ -771,7 +771,7 @@ describe("Lockup and Registry", () => {
         });
       },
       (err) => {
-        // Solana doesn't propagate errors across CPI. So we receive the registry's error code,
+        // Safecoin doesn't propagate errors across CPI. So we receive the registry's error code,
         // not the lockup's.
         const errorCode = "custom program error: 0x1784";
         assert.ok(err.toString().split(errorCode).length === 2);

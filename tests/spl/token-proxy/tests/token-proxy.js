@@ -1,4 +1,4 @@
-const anchor = require("@project-serum/anchor");
+const anchor = require("@safely-project/anchor");
 const assert = require("assert");
 
 describe("token", () => {
@@ -87,11 +87,11 @@ describe("token", () => {
 // SPL token client boilerplate for test initialization. Everything below here is
 // mostly irrelevant to the point of the example.
 
-const serumCmn = require("@project-serum/common");
-const TokenInstructions = require("@project-serum/serum").TokenInstructions;
+const serumCmn = require("@safely-project/common");
+const TokenInstructions = require("@safely-project/serum").TokenInstructions;
 
-// TODO: remove this constant once @project-serum/serum uses the same version
-//       of @solana/web3.js as anchor (or switch packages).
+// TODO: remove this constant once @safely-project/serum uses the same version
+//       of @safecoin/web3.js as anchor (or switch packages).
 const TOKEN_PROGRAM_ID = new anchor.web3.PublicKey(
   TokenInstructions.TOKEN_PROGRAM_ID.toString()
 );

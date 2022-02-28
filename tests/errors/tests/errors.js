@@ -1,5 +1,5 @@
 const assert = require("assert");
-const anchor = require("@project-serum/anchor");
+const anchor = require("@safely-project/anchor");
 const { Account, Transaction, TransactionInstruction } = anchor.web3;
 
 // sleep to allow logs to come in

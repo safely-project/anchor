@@ -1,10 +1,10 @@
-const spl = require("@solana/spl-token");
-const anchor = require("@project-serum/anchor");
-const serumCmn = require("@project-serum/common");
-const TokenInstructions = require("@project-serum/serum").TokenInstructions;
+const spl = require("@safecoin/safe-token");
+const anchor = require("@safely-project/anchor");
+const serumCmn = require("@safely-project/common");
+const TokenInstructions = require("@safely-project/serum").TokenInstructions;
 
-// TODO: remove this constant once @project-serum/serum uses the same version
-//       of @solana/web3.js as anchor (or switch packages).
+// TODO: remove this constant once @safely-project/serum uses the same version
+//       of @safecoin/web3.js as anchor (or switch packages).
 const TOKEN_PROGRAM_ID = new anchor.web3.PublicKey(
   TokenInstructions.TOKEN_PROGRAM_ID.toString()
 );

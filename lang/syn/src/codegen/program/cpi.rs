@@ -36,14 +36,14 @@ pub fn generate(program: &Program) -> proc_macro2::TokenStream {
                                         let ix = instruction::state::#ix_variant;
                                         let data = anchor_lang::InstructionData::data(&ix);
                                         let accounts = ctx.to_account_metas(None);
-                                        anchor_lang::solana_program::instruction::Instruction {
+                                        anchor_lang::safecoin_program::instruction::Instruction {
                                             program_id: crate::ID,
                                             accounts,
                                             data,
                                         }
                                     };
                                     let mut acc_infos = ctx.to_account_infos();
-                                    anchor_lang::solana_program::program::invoke_signed(
+                                    anchor_lang::safecoin_program::program::invoke_signed(
                                         &ix,
                                         &acc_infos,
                                         ctx.signer_seeds(),
@@ -82,14 +82,14 @@ pub fn generate(program: &Program) -> proc_macro2::TokenStream {
                             let mut data = #sighash_tts.to_vec();
                             data.append(&mut ix_data);
                             let accounts = ctx.to_account_metas(None);
-                            anchor_lang::solana_program::instruction::Instruction {
+                            anchor_lang::safecoin_program::instruction::Instruction {
                                 program_id: crate::ID,
                                 accounts,
                                 data,
                             }
                         };
                         let mut acc_infos = ctx.to_account_infos();
-                        anchor_lang::solana_program::program::invoke_signed(
+                        anchor_lang::safecoin_program::program::invoke_signed(
                             &ix,
                             &acc_infos,
                             ctx.signer_seeds,

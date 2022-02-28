@@ -8,7 +8,7 @@ Here, we introduce Anchor's core syntax elements and project workflow. This tuto
 To get started, clone the repo.
 
 ```bash
-git clone https://github.com/project-serum/anchor
+git clone https://github.com/safely-project/anchor
 ```
 
 Next, checkout the tagged branch of the same version of the anchor cli you have installed.
@@ -17,7 +17,7 @@ Next, checkout the tagged branch of the same version of the anchor cli you have 
 git checkout tags/<version>
 ```
 
-Change directories to the [example](https://github.com/project-serum/anchor/tree/master/examples/tutorial/basic-0).
+Change directories to the [example](https://github.com/safely-project/anchor/tree/master/examples/tutorial/basic-0).
 
 ```bash
 cd anchor/examples/tutorial/basic-0
@@ -35,13 +35,13 @@ In a separate terminal, start a local network. If you're running solana
 for the first time, generate a wallet.
 
 ```
-solana-keygen new
+safecoin-keygen new
 ```
 
 Then run
 
 ```
-solana-test-validator
+safecoin-test-validator
 ```
 
 Then, shut it down.
@@ -60,7 +60,7 @@ We define the minimum viable program as follows.
 <<< @/../examples/tutorial/basic-0/programs/basic-0/src/lib.rs
 
 * `#[program]` First, notice that a program is defined with the `#[program]` attribute, where each
-inner method defines an RPC request handler, or, in Solana parlance, an "instruction"
+inner method defines an RPC request handler, or, in Safecoin parlance, an "instruction"
 handler. These handlers are the entrypoints to your program that clients may invoke, as
 we will see soon.
 
@@ -69,7 +69,7 @@ container for the currently executing `program_id` generic over
 `Accounts`--here, the `Initialize` struct.
 
 * `#[derive(Accounts)]` The `Accounts` derive macro marks a struct containing all the accounts that must be
-specified for a given instruction. To understand Accounts on Solana, see the
+specified for a given instruction. To understand Accounts on Safecoin, see the
 [docs](https://docs.solana.com/developing/programming-model/accounts).
 In subsequent tutorials, we'll demonstrate how an `Accounts` struct can be used to
 specify constraints on accounts given to your program. Since this example doesn't touch any
@@ -129,7 +129,7 @@ Take note of the program's deployed address. We'll use it next.
 
 Now that we've built a program, deployed it to a local cluster, and generated an IDL,
 we can use the IDL to generate a client to speak to our on-chain program. For example,
-see [client.js](https://github.com/project-serum/anchor/tree/master/examples/tutorial/basic-0/client.js).
+see [client.js](https://github.com/safely-project/anchor/tree/master/examples/tutorial/basic-0/client.js).
 
 <<< @/../examples/tutorial/basic-0/client.js#main
 
@@ -138,11 +138,11 @@ the `rpc` namespace.
 
 Now, make sure to plugin your program's address into `<YOUR-PROGRAM-ID>` (a mild
 annoyance that we'll address next). In order to run the client, you'll also need the path
-to your wallet's keypair you generated when you ran `solana-keygen new`; you can find it
+to your wallet's keypair you generated when you ran `safecoin-keygen new`; you can find it
 by running
 
 ```bash
-solana config get keypair
+safecoin config get keypair
 ```
 
 Once you've got it, run the client with the environment variable `ANCHOR_WALLET` set to
@@ -161,7 +161,7 @@ deploying a program, copy and pasting the address, and explicitly reading
 an IDL is all a bit tedious, and can easily get out of hand the more tests and the more
 programs you have. For this reason, we introduce the concept of a workspace.
 
-Inspecting [tests/basic-0.js](https://github.com/project-serum/anchor/tree/master/examples/tutorial/basic-0/tests/basic-0.js), we see the above example can be reduced to
+Inspecting [tests/basic-0.js](https://github.com/safely-project/anchor/tree/master/examples/tutorial/basic-0/tests/basic-0.js), we see the above example can be reduced to
 
 <<< @/../examples/tutorial/basic-0/tests/basic-0.js#code
 

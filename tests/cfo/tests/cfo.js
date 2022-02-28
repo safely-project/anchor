@@ -1,16 +1,16 @@
 const assert = require("assert");
-const { Token } = require("@solana/spl-token");
-const anchor = require("@project-serum/anchor");
-const serumCmn = require("@project-serum/common");
-const { Market } = require("@project-serum/serum");
+const { Token } = require("@safecoin/safe-token");
+const anchor = require("@safely-project/anchor");
+const serumCmn = require("@safely-project/common");
+const { Market } = require("@safely-project/serum");
 const utf8 = anchor.utils.bytes.utf8;
 const { PublicKey, SystemProgram, Keypair, SYSVAR_RENT_PUBKEY } = anchor.web3;
 const utils = require("./utils");
 const { setupStakePool } = require("./utils/stake");
 
-const DEX_PID = new PublicKey("9xQeWvG816bUx9EPjHmaT23yvVM2ZWbrrpZb9PusVFin");
+const DEX_PID = new PublicKey("SRMrEgnzRgGMQ8QzcL8cjWr5xpdVs1KQCQ58Jkkq1qx");
 const SWAP_PID = new PublicKey("22Y43yTVxuUkoRKdm9thyRhQ3SdgQS7c7kB6UNCiaczD");
-const TOKEN_PID = new PublicKey("TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA");
+const TOKEN_PID = new PublicKey("ToKLx75MGim1d1jRusuVX8xvdvvbSDESVaNXpRA9PHN");
 const REGISTRY_PID = new PublicKey(
   "GrAkKfEpTKQuVHG2Y97Y2FF4i7y7Q5AHLK94JBy7Y5yv"
 );

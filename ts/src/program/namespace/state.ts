@@ -5,7 +5,7 @@ import {
   SystemProgram,
   Commitment,
   AccountMeta,
-} from "@solana/web3.js";
+} from "@safecoin/web3.js";
 import Provider, { getProvider } from "../../provider.js";
 import { Idl, IdlInstruction, IdlStateMethod, IdlTypeDef } from "../../idl.js";
 import { BorshCoder, Coder, stateDiscriminator } from "../../coder/index.js";

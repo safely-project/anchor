@@ -1,10 +1,10 @@
 import * as BufferLayout from "buffer-layout";
 import camelCase from "camelcase";
-import { PublicKey } from "@solana/web3.js";
+import { PublicKey } from "@safecoin/web3.js";
 import { InstructionCoder } from "../index.js";
 import { Idl } from "../../idl.js";
 
-export class SplTokenInstructionCoder implements InstructionCoder {
+export class SafeTokenInstructionCoder implements InstructionCoder {
   constructor(_: Idl) {}
 
   encode(ixName: string, ix: any): Buffer {

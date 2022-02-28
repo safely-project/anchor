@@ -1,6 +1,6 @@
 [programs.localnet]
 custom_coder = "Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS"
-spl_token = "FmpfPa1LHEYRbueNMnwNVd2JvyQ89GXGWdyZEXNNKV8w"
+safe_token = "FmpfPa1LHEYRbueNMnwNVd2JvyQ89GXGWdyZEXNNKV8w"
 
 [registry]
 url = "https://anchor.projectserum.com"

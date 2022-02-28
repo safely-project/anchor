@@ -9,10 +9,10 @@ build on top of it.
 To get started, clone the repo.
 
 ```bash
-git clone https://github.com/project-serum/anchor
+git clone https://github.com/safely-project/anchor
 ```
 
-Change directories to the [example](https://github.com/project-serum/anchor/tree/master/examples/tutorial/basic-1).
+Change directories to the [example](https://github.com/safely-project/anchor/tree/master/examples/tutorial/basic-1).
 
 ```bash
 cd anchor/examples/tutorial/basic-1
@@ -83,11 +83,11 @@ The last element passed into the method is common amongst all dynamically genera
 methods on the `rpc` namespace, containing several options for a transaction. Here,
 we specify the `accounts` field, an object of all the addresses the transaction
 needs to touch, and the `signers` array of all `Signer` objects needed to sign the
-transaction. Because `myAccount` is being created, the Solana runtime requires it
+transaction. Because `myAccount` is being created, the Safecoin runtime requires it
 to sign the transaction.
 
 ::: details
-If you've developed on Solana before, you might notice two things 1) the ordering of the accounts doesn't
+If you've developed on Safecoin before, you might notice two things 1) the ordering of the accounts doesn't
 matter and 2) the `isWritable` and `isSigner`
 options are not specified on the account anywhere. In both cases, the framework takes care
 of these details for you, by reading the IDL.

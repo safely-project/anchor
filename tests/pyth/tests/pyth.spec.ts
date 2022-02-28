@@ -1,5 +1,5 @@
-import * as anchor from "@project-serum/anchor";
-import { BN, Program, web3 } from "@project-serum/anchor";
+import * as anchor from "@safely-project/anchor";
+import { BN, Program, web3 } from "@safely-project/anchor";
 import assert from "assert";
 import { createPriceFeed, setFeedPrice, getFeedData } from "./oracleUtils";
 

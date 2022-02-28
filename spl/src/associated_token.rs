@@ -1,17 +1,17 @@
-use anchor_lang::solana_program::account_info::AccountInfo;
-use anchor_lang::solana_program::pubkey::Pubkey;
+use anchor_lang::safecoin_program::account_info::AccountInfo;
+use anchor_lang::safecoin_program::pubkey::Pubkey;
 use anchor_lang::Result;
 use anchor_lang::{context::CpiContext, Accounts};
 
-pub use spl_associated_token_account::{get_associated_token_address, ID};
+pub use safe_associated_token_account::{get_associated_token_address, ID};
 
 pub fn create<'info>(ctx: CpiContext<'_, '_, '_, 'info, Create<'info>>) -> Result<()> {
-    let ix = spl_associated_token_account::create_associated_token_account(
+    let ix = safe_associated_token_account::create_associated_token_account(
         ctx.accounts.payer.key,
         ctx.accounts.authority.key,
         ctx.accounts.mint.key,
     );
-    solana_program::program::invoke_signed(
+    safecoin_program::program::invoke_signed(
         &ix,
         &[
             ctx.accounts.payer,

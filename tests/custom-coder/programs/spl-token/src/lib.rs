@@ -8,7 +8,7 @@ declare_id!("FmpfPa1LHEYRbueNMnwNVd2JvyQ89GXGWdyZEXNNKV8w");
 // compiling.
 //
 #[program]
-pub mod spl_token {
+pub mod safe_token {
     use super::*;
 
     pub fn initialize_mint(

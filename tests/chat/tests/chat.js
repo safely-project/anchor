@@ -1,4 +1,4 @@
-const anchor = require("@project-serum/anchor");
+const anchor = require("@safely-project/anchor");
 const assert = require("assert");
 const { PublicKey } = anchor.web3;
 

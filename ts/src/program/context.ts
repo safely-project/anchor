@@ -3,7 +3,7 @@ import {
   Signer,
   ConfirmOptions,
   TransactionInstruction,
-} from "@solana/web3.js";
+} from "@safecoin/web3.js";
 import { Address } from "./common.js";
 import { IdlAccountItem, IdlAccounts, IdlInstruction } from "../idl.js";
 

@@ -13,5 +13,5 @@ no-entrypoint = []
 cpi = ["no-entrypoint"]
 
 [dependencies]
-anchor-lang = { path = "../../../../lang" }
-anchor-spl = { path = "../../../../spl" }
+safe-anchor-lang = { path = "../../../../lang" }
+safe-safe-anchor-spl = { path = "../../../../spl" }

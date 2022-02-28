@@ -4,7 +4,7 @@
 
 const utils = require("../tests/utils");
 const fs = require("fs");
-const anchor = require("@project-serum/anchor");
+const anchor = require("@safely-project/anchor");
 const provider = anchor.Provider.local();
 
 async function main() {

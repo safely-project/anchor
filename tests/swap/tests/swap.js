@@ -1,9 +1,9 @@
 const assert = require("assert");
-const anchor = require("@project-serum/anchor");
+const anchor = require("@safely-project/anchor");
 const BN = anchor.BN;
-const OpenOrders = require("@project-serum/serum").OpenOrders;
-const TOKEN_PROGRAM_ID = require("@solana/spl-token").TOKEN_PROGRAM_ID;
-const serumCmn = require("@project-serum/common");
+const OpenOrders = require("@safely-project/serum").OpenOrders;
+const TOKEN_PROGRAM_ID = require("@safecoin/safe-token").TOKEN_PROGRAM_ID;
+const serumCmn = require("@safely-project/common");
 const utils = require("./utils");
 
 // Taker fee rate (bps).

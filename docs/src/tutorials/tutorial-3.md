@@ -8,10 +8,10 @@ This tutorial covers how to call one program from another, a process known as
 To get started, clone the repo.
 
 ```bash
-git clone https://github.com/project-serum/anchor
+git clone https://github.com/safely-project/anchor
 ```
 
-Change directories to the [example](https://github.com/project-serum/anchor/tree/master/examples/tutorial/basic-3).
+Change directories to the [example](https://github.com/safely-project/anchor/tree/master/examples/tutorial/basic-3).
 
 ```bash
 cd anchor/examples/tutorial/basic-3
@@ -62,16 +62,16 @@ If you look at the `Cargo.toml` for this example, you'll see
 ## Signer Seeds
 
 Often it's useful for a program to sign instructions. For example, if a program controls a token
-account and wants to send tokens to another account, it must sign. In Solana, this is done by specifying
+account and wants to send tokens to another account, it must sign. In Safecoin, this is done by specifying
 "signer seeds" on CPI. To do this using the example above, simply change
 `CpiContext::new(cpi_accounts, cpi_program)` to
 `CpiContext::new_with_signer(cpi_accounts, cpi_program, signer_seeds)`.
 
-For more background on signing with program derived addresses, see the official Solana [documentation](https://docs.solana.com/developing/programming-model/calling-between-programs#program-signed-accounts).
+For more background on signing with program derived addresses, see the official Safecoin [documentation](https://docs.solana.com/developing/programming-model/calling-between-programs#program-signed-accounts).
 
 ## Return values
 
-Solana currently has no way to return values from CPI, alas. However, you can approximate this
+Safecoin currently has no way to return values from CPI, alas. However, you can approximate this
 by having the callee write return values to an account and the caller read that account to
 retrieve the return value. In future work, Anchor should do this transparently.
 
@@ -81,4 +81,4 @@ Now that you can have your programs call other programs, you should be able to a
 
 ## Next Steps
 
-We just covered Cross Program Invocation and showed how anchor can handle talking to multiple different programs in the solana ecosystem. In the next step, we will teach you how to handle errors and in Anchor.
+We just covered Cross Program Invocation and showed how anchor can handle talking to multiple different programs in the safecoin ecosystem. In the next step, we will teach you how to handle errors and in Anchor.

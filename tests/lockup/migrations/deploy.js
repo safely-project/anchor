@@ -1,8 +1,8 @@
 // deploy.js is a simple deploy script to initialize a program. This is run
 // immediately after a deploy.
 
-const serumCmn = require("@project-serum/common");
-const anchor = require("@project-serum/anchor");
+const serumCmn = require("@safely-project/common");
+const anchor = require("@safely-project/anchor");
 const PublicKey = anchor.web3.PublicKey;
 
 module.exports = async function (provider) {
@@ -86,7 +86,7 @@ mints: { ${mints} },
 
 async function genesis(provider) {
   if (
-    provider.connection._rpcEndpoint === "https://api.mainnet-beta.solana.com"
+    provider.connection._rpcEndpoint === "https://api.mainnet-beta.safecoin.org"
   ) {
     return {
       srm: {

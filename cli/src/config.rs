@@ -4,8 +4,8 @@ use anyhow::{anyhow, Error, Result};
 use clap::{ArgEnum, Parser};
 use heck::SnakeCase;
 use serde::{Deserialize, Serialize};
-use solana_sdk::pubkey::Pubkey;
-use solana_sdk::signature::{Keypair, Signer};
+use safecoin_sdk::pubkey::Pubkey;
+use safecoin_sdk::signature::{Keypair, Signer};
 use std::collections::BTreeMap;
 use std::convert::TryFrom;
 use std::fs::{self, File};
@@ -365,7 +365,7 @@ impl Config {
     }
 
     pub fn wallet_kp(&self) -> Result<Keypair> {
-        solana_sdk::signature::read_keypair_file(&self.provider.wallet.to_string())
+        safecoin_sdk::signature::read_keypair_file(&self.provider.wallet.to_string())
             .map_err(|_| anyhow!("Unable to read keypair file"))
     }
 }
@@ -551,7 +551,7 @@ pub struct Validator {
     // Enable the faucet on this port [deafult: 9900].
     #[serde(skip_serializing_if = "Option::is_none")]
     pub faucet_port: Option<u16>,
-    // Give the faucet address this much SOL in genesis. [default: 1000000]
+    // Give the faucet address this much SAFE in genesis. [default: 1000000]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub faucet_sol: Option<String>,
     // Gossip DNS name or IP address for the validator to advertise in gossip. [default: 127.0.0.1]
@@ -560,7 +560,7 @@ pub struct Validator {
     // Gossip port number for the validator
     #[serde(skip_serializing_if = "Option::is_none")]
     pub gossip_port: Option<u16>,
-    // URL for Solana's JSON RPC or moniker.
+    // URL for Safecoin's JSON RPC or moniker.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub url: Option<String>,
     // Use DIR as ledger location
@@ -607,7 +607,7 @@ impl Program {
 
     pub fn keypair(&self) -> Result<Keypair> {
         let file = self.keypair_file()?;
-        solana_sdk::signature::read_keypair_file(file.path())
+        safecoin_sdk::signature::read_keypair_file(file.path())
             .map_err(|_| anyhow!("failed to read keypair for program: {}", self.lib_name))
     }
 

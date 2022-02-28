@@ -1,6 +1,6 @@
-const anchor = require("@project-serum/anchor");
-const serumCmn = require("@project-serum/common");
-const TokenInstructions = require("@project-serum/serum").TokenInstructions;
+const anchor = require("@safely-project/anchor");
+const serumCmn = require("@safely-project/common");
+const TokenInstructions = require("@safely-project/serum").TokenInstructions;
 const utils = require("../../deps/stake/tests/utils");
 
 const lockup = anchor.workspace.Lockup;
