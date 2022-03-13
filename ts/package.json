@@ -33,7 +33,7 @@
     "test": "jest tests --detectOpenHandles"
   },
   "dependencies": {
-    "@safely/borsh": "^0.2.5",
+    "@safely-project/borsh": "^0.2.5",
     "@safecoin/web3.js": "^1.29.4",
     "base64-js": "^1.5.1",
     "bn.js": "^5.1.2",
